@@ -16,27 +16,62 @@
   </head>
   <body>
     <div class="container">
-  <div class="row">
-    <div class="col s6 offset-m3">
-    <div class="card teal lighten-3">
-      <div class="card-content white-text">
-        <span class="card-title"> Random Quotes Rewritten </span>
-        <p>These are some random quotes that I found on <a href="http://goodreads.com/quotes" target="_blank">goodreads</a>. Enjoy!</p>
-
-        
-        <blockquote>
-          <div id="quote-text"></div>            
-          
-        </blockquote>
-        <div id="quote-author"></div>
+      <div class="row">
+        <div class="col s6 offset-m3">
+        <div class="card teal lighten-3">
+          <div class="card-content white-text">
+            <span class="card-title"> Random Quotes Rewritten </span>
+            <p>These are some random quotes that I found on <a href="http://goodreads.com/quotes" target="_blank">goodreads</a>. Enjoy!</p>
+    
+            
+            <blockquote>
+              <div id="quote-text"></div>            
+              
+            </blockquote>
+            <div id="quote-author"></div>
+          </div>
+          <div class="card-action">
+            <button class="btn" id="new-quote-btn">New Quote</button>
+            <a class="btn"   href="https://twitter.com/intent/tweet?text=Hello%20world" target="_blank">Share on Twitter</a>
+          </div>
+        </div>
       </div>
-      <div class="card-action">
-        <button class="btn" id="new-quote-btn">New Quote</button>
-        <a class="btn"   href="https://twitter.com/intent/tweet?text=Hello%20world" target="_blank">Share on Twitter</a>
       </div>
     </div>
-  </div>
-  </div>
-</div>
+    
+    <script type="text/javascript">
+      var quotes=[];
+
+      quotes[0] = ["Don't cry because it's over, smile because it happened.","Dr. Seuss"];
+      quotes[1] = ["Be yourself; everyone else is already taken.","Oscar Wilde"];
+      quotes[2] = ["Be who you are and say what you feel, because those who mind don't matter, and those who matter don't mind.","Bernard M. Baruch"];
+      quotes[3] = ["Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.","Albert Einstein"];
+      quotes[4] = ["A room without books is like a body without a soul.","Marcus Tullius Cicero "];
+      quotes[5] = ["You only live once, but if you do it right, once is enough.","Mae West"];
+      quotes[6] = ["Be the change that you wish to see in the world.","Mahatma Gandhi"];
+      quotes[7] = ["In three words I can sum up everything I've learned about life: it goes on.","Robert Frost"];
+      quotes[8] = ["No one can make you feel inferior without your consent.","Eleanor Roosevelr"];
+      quotes[9] = ["If you tell the truth, you don't have to remember anything.","Mark Twain"];
+      
+      function newRandomQuote() {
+        var index = Math.floor(Math.random()*quotes.length);
+        var selected = quotes[index]
+        $("#quote-text").html(selected[0]);
+        $("#quote-author").html(selected[1]);
+        
+        var tweet_string = selected[0] + " - " + selected[1]
+        $("a").attr("href", "https://twitter.com/intent/tweet?text=" + tweet_string);
+      }
+      
+      $(document).ready(function(){
+       newRandomQuote();
+        
+       $("button").click(function(){
+         newRandomQuote();
+       });
+       
+      
+      });
+    </script>
   </body>
 </html>
